@@ -5,8 +5,8 @@
     <version>$version$</version>
     <authors>Tatham Oddie</authors>
     <owners>Tatham Oddie</owners>
-    <licenseUrl>http://systemioabstractions.codeplex.com/license</licenseUrl>
-    <projectUrl>http://systemioabstractions.codeplex.com/</projectUrl>
+    <licenseUrl>https://github.com/tathamoddie/System.IO.Abstractions/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/tathamoddie/System.IO.Abstractions/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Testing helpers for the System.IO.Abstractions package to save having to manually mock everything.</description>
     <tags>testing</tags>
