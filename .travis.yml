@@ -1,0 +1,7 @@
+language: csharp
+solution: System.IO.Abstractions.sln
+install:
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Debug System.IO.Abstractions.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./TestHelpers.Tests/bin/Debug/System.IO.Abstractions.TestingHelpers.Tests.dll
