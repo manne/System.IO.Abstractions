@@ -903,7 +903,9 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             TestDelegate action = () => fileSystem.Directory.Move(sourcePath, destPath);
 
             // Assert
-            Assert.Throws<IOException>(action, "Source and destination path must have identical roots. Move will not work across volumes.");
+            var sourceRoot = fileSystem.Path.GetPathRoot(sourcePath);
+            var destRoot = fileSystem.Path.GetPathRoot(destPath);
+            Assert.Throws<IOException>(action, "Source and destination path must have identical roots. Move will not work across volumes. SourceRoot: {0}. DestRoot: {1}.", sourceRoot, destRoot);
         }
 
         [Test]
