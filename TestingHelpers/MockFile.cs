@@ -373,12 +373,12 @@ namespace System.IO.Abstractions.TestingHelpers
 
         public override void WriteAllLines(string path, string[] contents)
         {
-            WriteAllText(path, string.Join("\n", contents));
+            WriteAllLines(path, contents, MockFileData.DefaultEncoding);
         }
 
         public override void WriteAllLines(string path, string[] contents, Encoding encoding)
         {
-            WriteAllText(path, string.Join("\n", contents), encoding);
+            WriteAllText(path, string.Join(Environment.NewLine, contents), encoding);
         }
 
         public override void WriteAllText(string path, string contents)
