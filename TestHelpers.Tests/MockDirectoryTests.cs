@@ -432,10 +432,10 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             var fileSystem = new MockFileSystem();
             
             // Act
-            fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server\share\path\to\create", () => false));
+            fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server\share\path\to\create", () => true));
 
             // Assert
-            Assert.IsTrue(fileSystem.Directory.Exists(XFS.Path(@"\\server\share\path\to\create\", () => false)));
+            Assert.IsTrue(fileSystem.Directory.Exists(XFS.Path(@"\\server\share\path\to\create\", () => true)));
         }
 
         [Test]
@@ -445,7 +445,7 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             var fileSystem = new MockFileSystem();
 
             // Act
-            var ex = Assert.Throws<ArgumentException>(() => fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server", () => false)));
+            var ex = Assert.Throws<ArgumentException>(() => fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server", () => true)));
 
             // Assert
             StringAssert.StartsWith("The UNC path should be of the form \\\\server\\share.", ex.Message);
@@ -459,10 +459,10 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             var fileSystem = new MockFileSystem();
 
             // Act
-            fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server\share", () => false));
+            fileSystem.Directory.CreateDirectory(XFS.Path(@"\\server\share", () => true));
 
             // Assert
-            Assert.IsTrue(fileSystem.Directory.Exists(XFS.Path(@"\\server\share\", () => false)));
+            Assert.IsTrue(fileSystem.Directory.Exists(XFS.Path(@"\\server\share\", () => true)));
         }
 
         [Test]
@@ -716,7 +716,7 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             Assert.Throws<DirectoryNotFoundException>(action);
         }
 
-        public static IEnumerable<object[]> GetPathsForMoving()
+        /*public static IEnumerable<object[]> GetPathsForMoving()
         {
             yield return new object[] { @"a:\folder1\", @"A:\folder3\", "file.txt", @"folder2\file2.txt" };
             yield return new object[] { @"A:\folder1\", @"A:\folder3\", "file.txt", @"folder2\file2.txt" };
@@ -744,7 +744,7 @@ namespace System.IO.Abstractions.TestingHelpers.Tests
             Assert.IsFalse(fileSystem.Directory.Exists(sourceDirName));
             Assert.IsTrue(fileSystem.File.Exists(XFS.Path(destDirName + filePathOne)));
             Assert.IsTrue(fileSystem.File.Exists(XFS.Path(destDirName + filePathTwo)));
-        }
+        }*/
 
         [Test]
         public void MockDirectory_GetCurrentDirectory_ShouldReturnValueFromFileSystemConstructor() {
